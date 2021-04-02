@@ -82,21 +82,18 @@ export default memo(function KXLAppPlayBar() {
 		}
 		// 对歌词的处理
 		// 找到当前time对应的歌词
-		// debugger;
 		let i = 0;
 		for (; i < lyricList.length; i++) {
 			const lyricTime = lyricList[i].time;
-			console.log("currentTime:",currentTime);
-			console.log("lyricTime:",lyricTime);
 			if (currentTime < lyricTime) {
 				break;
 			}
 		}
+		// 如果当前播放时间小于歌词的时间，则显示i-1时间的歌词
 		const finalIndex = i - 1;
 		if (finalIndex !== currentLyricIndex) {
 			dispatch(changeCurrentLyricIndex(finalIndex));
 			const content = lyricList[finalIndex].content;
-			// console.log(content);
 
 			// 歌词显示使用antd的Message
 			message.open({

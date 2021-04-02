@@ -256,7 +256,7 @@ function reducer(state = defaultState, action) {
 		case actionTypes.CHANGE_LYRIC_LIST:
 			return state.set("lyricList",action.lyricList);
 		case actionTypes.CHANGE_CURRENT_LYRIC_INDEX:
-			return state.set("currentLyricIndex",action.currentLyricIndex);
+			return state.set("currentLyricIndex",action.index);
 		default:
 			return state;
 	}

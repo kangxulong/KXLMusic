@@ -1,17 +1,16 @@
 import React from 'react'
-
 import {Redirect} from "react-router-dom"
 
-import KXLDiscover from "@/pages/discover";
-import KXLRecommend from "@/pages/discover/c-pages/recommend"
-import KXLRanking from "@/pages/discover/c-pages/ranking"
-import KXLSongs from "@/pages/discover/c-pages/songs"
-import KXLDjradio from "@/pages/discover/c-pages/djradio"
-import KXLArtist from "@/pages/discover/c-pages/artist"
-import KXLAlbum from "@/pages/discover/c-pages/album"
+const KXLDiscover = React.lazy(() => import("@/pages/discover"))
+const KXLRecommend = React.lazy(() => import("@/pages/discover/c-pages/recommend"))
+const KXLRanking = React.lazy(() => import("@/pages/discover/c-pages/ranking"))
+const KXLSongs = React.lazy(() => import("@/pages/discover/c-pages/songs"))
+const KXLDjradio = React.lazy(() => import("@/pages/discover/c-pages/djradio"))
+const KXLArtist = React.lazy(() => import("@/pages/discover/c-pages/artist"))
+const KXLAlbum = React.lazy(() => import("@/pages/discover/c-pages/album"))
 
-import KXLFriend from '@/pages/friend';
-import KXLMine from '@/pages/mine';
+const KXLFriend = React.lazy(() => import("@/pages/friend"))
+const KXLMine = React.lazy(() => import("@/pages/mine"))
 
 const routes = [
   {
