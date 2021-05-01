@@ -15,6 +15,7 @@ import {
 } from "@/utils/format-utils";
 
 import { Slider } from "antd";
+import KXLAppPlayPanel from "../app-play-panel";
 import { AppPlayBarWrapper, Control, PlayInfo, Operate } from "./style";
 
 export default memo(function KXLAppPlayBar() {
@@ -23,6 +24,7 @@ export default memo(function KXLAppPlayBar() {
 	const [progress, setProgress] = useState(0);
 	const [ischange, setIschange] = useState(false);
 	const [isPlaying, setIsPlaying] = useState(false);
+	const [isPanelShow, setIsPanelShow] = useState(false);
 
 	// redux hook
 	const {
@@ -96,12 +98,12 @@ export default memo(function KXLAppPlayBar() {
 			const content = lyricList[finalIndex].content;
 
 			// 歌词显示使用antd的Message
-			message.open({
-				key: "lyric",
-				content: content,
-				duration:0,
-				className:"lyric-class"
-			});
+				message.open({
+					key: "lyric",
+					content: content,
+					duration: 0,
+					className: "lyric-class",
+				});
 		}
 	};
 
@@ -232,12 +234,16 @@ export default memo(function KXLAppPlayBar() {
 								changeSequence();
 							}}
 						></button>
-						<button className="list btn sprite_playbar">
+						<button
+							className="list btn sprite_playbar"
+							onClick={(e) => setIsPanelShow(!isPanelShow)}
+						>
 							<span>{playlist.length}</span>
 						</button>
 					</div>
 				</Operate>
 				<audio ref={myAudio} onTimeUpdate={timeUpdate} onEnded={timeend} />
+				{isPanelShow && <KXLAppPlayPanel />}
 			</div>
 		</AppPlayBarWrapper>
 	);
